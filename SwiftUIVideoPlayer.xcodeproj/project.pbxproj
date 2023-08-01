@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D208BA622A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BA612A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift */; };
-		D208BA642A79A51700D6DE2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BA632A79A51700D6DE2B /* ContentView.swift */; };
+		D208BA642A79A51700D6DE2B /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BA632A79A51700D6DE2B /* VideoPlayerView.swift */; };
 		D208BA662A79A51800D6DE2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D208BA652A79A51800D6DE2B /* Assets.xcassets */; };
 		D208BA692A79A51800D6DE2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D208BA682A79A51800D6DE2B /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		D208BA5E2A79A51700D6DE2B /* SwiftUIVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D208BA612A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIVideoPlayerApp.swift; sourceTree = "<group>"; };
-		D208BA632A79A51700D6DE2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D208BA632A79A51700D6DE2B /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		D208BA652A79A51800D6DE2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D208BA682A79A51800D6DE2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				D208BA612A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift */,
-				D208BA632A79A51700D6DE2B /* ContentView.swift */,
+				D208BA632A79A51700D6DE2B /* VideoPlayerView.swift */,
 				D208BA652A79A51800D6DE2B /* Assets.xcassets */,
 				D208BA672A79A51800D6DE2B /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D208BA642A79A51700D6DE2B /* ContentView.swift in Sources */,
+				D208BA642A79A51700D6DE2B /* VideoPlayerView.swift in Sources */,
 				D208BA622A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
