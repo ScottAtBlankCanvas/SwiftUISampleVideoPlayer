@@ -29,7 +29,7 @@ struct VideoPlayerView: View {
     } catch { print("Setting category to AVAudioSessionCategoryPlayback failed.")
         
     }
-*/
+*/ 
     @State private var timeObservation: Any?
     @State private var statusObserver: Any?
 
