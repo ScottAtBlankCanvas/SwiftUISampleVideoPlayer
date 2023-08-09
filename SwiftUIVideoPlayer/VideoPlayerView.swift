@@ -29,36 +29,40 @@ struct VideoPlayerView: View {
     } catch { print("Setting category to AVAudioSessionCategoryPlayback failed.")
         
     }
-*/ 
+*/
+    @State private var config: VideoPlayerConfig = VideoPlayerConfig();
+    
     @State private var timeObservation: Any?
     @State private var statusObserver: Any?
 
     @State var player = AVPlayer()
-    @State private var url: String = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
-    //                    "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8")!
-    //                    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4")!
 
     var body: some View {
         NavigationStack {
             VStack {
-                
-                TextField(
-                     "URL",
-                     text: $url
-                 )
-                 .onSubmit {
-                     print("onSubmit")
-                     //TODO: validate the URL validate(name: url)
-                 }
-                 .textInputAutocapitalization(.never)
-                 .disableAutocorrection(true)
-                 .border(.secondary)
- 
+                VideoPlayer(player: player)
+                    .scaledToFit()
+
+                VideoPlayerConfigView(config: $config)
+                 
                 Button("Play") {
-                    print("Button tapped!")
+                    print("Play!")
+                    //config.doPlay()
+                    // change model??
 
-                    player = AVPlayer(url: URL(string: url)!)
+                    player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: config.url)!))
+ 
+                    //observer = playerItem.observe(\.status) { [weak self] (item, _) in
+                    //    switch item.status {
+                    //    case .readyToPlay:
+                    //        self?.avPlayer.play()
+                    //    case .failed:
+                    //        // handle item.error
+                    //    default:
+                    //        break
+                    //}
 
+ 
                     // Observe the player's time periodically so we can update the seek bar's
                     // position as we progress through playback
                     timeObservation = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 2.0, preferredTimescale: 600), queue: nil) { [/*weak*/ self] time in
@@ -91,10 +95,8 @@ struct VideoPlayerView: View {
                     // https://stackoverflow.com/questions/51869313/ios-getting-current-avplayeritem-state
                 }
 
-
-                VideoPlayer(player: player)
-                    .scaledToFit()
-            }
+ 
+             }
         }
     }
 }
