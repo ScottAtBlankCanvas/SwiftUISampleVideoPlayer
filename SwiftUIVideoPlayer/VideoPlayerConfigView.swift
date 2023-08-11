@@ -10,8 +10,6 @@ import SwiftUI
 struct VideoPlayerConfigView: View {
     @Binding var config: VideoPlayerConfig
     
-
-    
     var body: some View {
         NavigationStack {
               VStack {
