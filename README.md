@@ -2,19 +2,19 @@
 A Simple SwiftUI Video Player
 
 ## Background
+My goal is to complete a simple video player app to learn the basics of SwiftUI, the Swift languages, and engaging with AVPlayer
+
 I've done a lot of video work, but very little iOS app development.  And I've never use Swift.
-My goal was to complete a simple video player app to learn the basics of SwiftUI, the Swift languages, and engaging with AVPlayer
 
 It turns out, that its simple to shove a Video Player into a SwiftUI App and play back a video via URL.  There are many 50 line projects online that show it.
 
-I wanted to ensure I went deeper and answered these questions during the exercise:
+I wanted to ensure I went deeper during the exercise:
 - Create multiple views, so I understand how to create independent Views that build into an app
-- Cleanly separate Model and View code, listening for Model changes
+- Cleanly separate Model and View code using proper techniques, listening for Model changes
 - Observe AVPlayer state changes and report this dynamically on the app
 
-
 ## Requirements
-The App will be a non-trivial skeleton for creating a Video Player.  It will consist of 3 views:
+The final App will be a skeleton for creating a more full featured Video Player.  It will consist of:
 - A config view that configures what is to be played
 - A Play button to load the player and play what is configured
 - A video player that will play the video
