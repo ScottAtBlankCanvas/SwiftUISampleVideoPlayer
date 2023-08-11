@@ -18,13 +18,8 @@ struct VideoPlayerConfigView: View {
                        "URL",
                        text: $config.url
                    )
-                   .onSubmit {
-                       print("onSubmit")
-                       //TODO: validate the URL validate(name: url)
-                   }
                    .textInputAutocapitalization(.never)
                    .disableAutocorrection(true)
-                   .border(.secondary)
    
               }
           }

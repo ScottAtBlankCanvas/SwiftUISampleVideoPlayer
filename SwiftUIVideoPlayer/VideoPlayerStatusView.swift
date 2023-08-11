@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct VideoPlayerStatusView: View {
-    /*@Binding*/ @ObservedObject var status: VideoPlayerStatus
+    @ObservedObject var status: VideoPlayerStatus
     var body: some View {
         Text("Status: \(status.status)")
+        Text("Error: \(status.error)")
     }
 }
 /*

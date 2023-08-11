@@ -9,16 +9,13 @@ import Foundation
 import AVKit
 
 class VideoPlayerStatus : ObservableObject {
+    @Published var status: String = ""
+    @Published var error: String = ""
+
     var player: AVPlayer?
-    @Published var status: String = "Foo"
     
-    private var timeObserver: Any?
     private var statusObserver: Any?
     private var timeControlStatusObserver: Any?
-    private var errorObserver: Any?
-
-    private var playerStatusToken: Any?
-    
     
     func replacePlayer(newPlayer: AVPlayer) {
         teardownObservers()
@@ -29,24 +26,30 @@ class VideoPlayerStatus : ObservableObject {
     }
     
     func updateStatus(status: String) {
-        self.status = status
+        if (self.status != status) {
+            self.status = status
+        }
     }
-  
+ 
+    func updateError(err: String) {
+        if (self.error != err) {
+            self.error = err
+        }
+    }
+
     
     private func teardownObservers() {
-        //print("teardownObservers")
-        if let timeObserver {
-            print("remove timeobserver");
-            player?.removeTimeObserver(timeObserver)
-        }
-        // TODO  player?.currentItem?.
+//        //print("teardownObservers")
+//        if let timeObserver {
+//            print("remove timeobserver");
+//            player?.removeTimeObserver(timeObserver)
+//        }
     }
     
     private func setupObservers() {
-        print("setupObservers")
+ //       print("setupObservers")
 
-        // TODO: scaffold new player here
-        
+         
 //        // Observe the player's time periodically so we can update the seek bar's
 //        // position as we progress through playback
 //        timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 2.0, preferredTimescale: 600), queue: nil) { [/*weak*/ self] time in
@@ -61,42 +64,32 @@ class VideoPlayerStatus : ObservableObject {
 
             if (player.timeControlStatus  == AVPlayer.TimeControlStatus.paused) {
                 self?.updateStatus(status: "Paused")
-
             } else if (player.timeControlStatus == AVPlayer.TimeControlStatus.waitingToPlayAtSpecifiedRate) {
                 self?.updateStatus(status: "Waiting")
             } else if (player.timeControlStatus == AVPlayer.TimeControlStatus.playing) {
                 self?.updateStatus(status: "Playing")
             }
-            print(self?.status)
+            //print(self?.status)
             })
  
 
         statusObserver = player?.currentItem?.observe(\.status, options:  [.new, .old], changeHandler: {
             [weak self] (playerItem, change) in
-            print(playerItem.status.rawValue)
-            if playerItem.status == .unknown {
-                print("AvPlayerItem.Status: unknown")
-            }
-            else if playerItem.status == .readyToPlay {
-                print("AvPlayerItem.Status: readyToPlay")
-            }
-            else if playerItem.status == .failed {
+            if playerItem.status == .failed {
                 print("AvPlayerItem.Status: failed")
-                print(self?.player?.currentItem?.error)
+ 
+                if let error = playerItem.error as NSError? {
+                     let errorCode = error.code
+                    self?.updateError(err: "\(errorCode)")
 
-                self?.updateStatus(status: "Error \(self?.player?.currentItem?.error.debugDescription)")
-                print(self?.status)
+                } else {
+                    self?.updateError(err: "\(playerItem.error )")
+                }
             }
 
         })
-        
-        
-//                            // TODO: Listen to change events
-//                            // https://stackoverflow.com/questions/51869313/ios-getting-current-avplayeritem-state
-//                        }
-
-
-    }
+    
+     }
     
 }
 
