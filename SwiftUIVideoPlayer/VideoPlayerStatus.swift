@@ -8,6 +8,9 @@
 import Foundation
 import AVKit
 
+// TODO: rename Status-> State
+// TODO: tear down observers needed?
+
 class VideoPlayerStatus : ObservableObject {
     @Published var status: String = ""
     @Published var error: String = ""
@@ -16,15 +19,7 @@ class VideoPlayerStatus : ObservableObject {
     
     private var statusObserver: Any?
     private var timeControlStatusObserver: Any?
-    
-    func replacePlayer(newPlayer: AVPlayer) {
-        teardownObservers()
-         
-        player = newPlayer
-        
-        setupObservers()
-    }
-    
+ 
     func updateStatus(status: String) {
         if (self.status != status) {
             self.status = status
@@ -36,6 +31,16 @@ class VideoPlayerStatus : ObservableObject {
             self.error = err
         }
     }
+
+    
+    func connectPlayer(newPlayer: AVPlayer) {
+        teardownObservers()
+         
+        player = newPlayer
+        
+        setupObservers()
+    }
+    
 
     
     private func teardownObservers() {

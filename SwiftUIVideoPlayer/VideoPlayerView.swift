@@ -19,10 +19,18 @@ struct VideoPlayerView: View {
         
     }
 */
-    @State private var player = AVPlayer()
+    private var player = AVPlayer()
     @State private var config: VideoPlayerConfig = VideoPlayerConfig()
     @StateObject private var status: VideoPlayerStatus = VideoPlayerStatus()
-    
+ 
+    func initAndPlay(config: VideoPlayerConfig) {
+       player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: config.url)!))
+       
+       status.connectPlayer(newPlayer: player)
+        
+       player.play();
+
+    }
 
     var body: some View {
         NavigationStack {
@@ -30,18 +38,11 @@ struct VideoPlayerView: View {
                 VideoPlayerConfigView(config: $config)
                 
                 Button("Play") {
-                    print("Load!")
-                    
-                    // change model??
-                    player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: config.url)!))
-                    
-                    status.replacePlayer(newPlayer: player)
-                    player.play();
+                    initAndPlay(config: config)
                 }
 
                 VideoPlayer(player: player)
-                //    .scaledToFit()
-                .frame(width: 320, height: 180, alignment: .center)
+                 .frame(width: 320, height: 180, alignment: .center)
 
 
                 VideoPlayerStatusView(status: status)
