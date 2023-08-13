@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VideoPlayerStatusView: View {
-    @ObservedObject var status: VideoPlayerStatus
+    @ObservedObject var status: VideoPlayerStateObserver
     var body: some View {
         Text("Status: \(status.status)")
         Text("Error: \(status.error)")

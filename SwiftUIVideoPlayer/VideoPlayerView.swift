@@ -21,7 +21,7 @@ struct VideoPlayerView: View {
 */
     private var player = AVPlayer()
     @State private var config: VideoPlayerConfig = VideoPlayerConfig()
-    @StateObject private var status: VideoPlayerStatus = VideoPlayerStatus()
+    @StateObject private var status: VideoPlayerStateObserver = VideoPlayerStateObserver()
  
     func initAndPlay(config: VideoPlayerConfig) {
        player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: config.url)!))

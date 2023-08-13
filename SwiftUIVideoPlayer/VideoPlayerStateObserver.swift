@@ -1,5 +1,5 @@
 //
-//  VideoPlayerStatus.swift
+//  VideoPlayerStateObserver.swift
 //  SwiftUIVideoPlayer
 //
 //  Created by scott on 8/10/23.
@@ -8,10 +8,9 @@
 import Foundation
 import AVKit
 
-// TODO: rename Status-> State
 // TODO: tear down observers needed?
 
-class VideoPlayerStatus : ObservableObject {
+class VideoPlayerStateObserver : ObservableObject {
     @Published var status: String = ""
     @Published var error: String = ""
 
