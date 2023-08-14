@@ -21,15 +21,14 @@ struct VideoPlayerCompositeView: View {
 */
     private var player = AVPlayer()
     @State private var config: VideoPlayerConfig = VideoPlayerConfig()
-    @StateObject private var status: VideoPlayerStateObserver = VideoPlayerStateObserver()
+    @StateObject private var playerState: VideoPlayerStateObserver = VideoPlayerStateObserver()
  
     func initAndPlay(config: VideoPlayerConfig) {
        player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: config.url)!))
        
-       status.connectPlayer(newPlayer: player)
+       playerState.connectPlayer(newPlayer: player)
         
        player.play();
-
     }
 
     var body: some View {
@@ -45,7 +44,7 @@ struct VideoPlayerCompositeView: View {
                  .frame(width: 320, height: 180, alignment: .center)
 
 
-                VideoPlayerStatusView(status: status)
+                VideoPlayerStatusView(status: playerState)
                  
  
              }
