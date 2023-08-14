@@ -44,7 +44,7 @@ struct VideoPlayerCompositeView: View {
                  .frame(width: 320, height: 180, alignment: .center)
 
 
-                VideoPlayerStatusView(status: playerState)
+                VideoPlayerStateObserverView(status: playerState)
                  
  
              }
