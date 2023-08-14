@@ -1,5 +1,5 @@
 //
-//  VideoPlayerView.swift
+//  VideoPlayerCompositeView.swift
 //  SwiftUIVideoPlayer
 //
 //  Created by scott on 8/1/23.
@@ -10,7 +10,7 @@ import SwiftUI
 import AVKit
 
 
-struct VideoPlayerView: View {
+struct VideoPlayerCompositeView: View {
  
 /* TODO: turn off silent mode??
     do { try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
@@ -55,6 +55,6 @@ struct VideoPlayerView: View {
 
 struct VideoPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        VideoPlayerView()
+        VideoPlayerCompositeView()
     }
 }

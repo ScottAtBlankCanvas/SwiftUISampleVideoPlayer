@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D208BA622A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BA612A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift */; };
-		D208BA642A79A51700D6DE2B /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BA632A79A51700D6DE2B /* VideoPlayerView.swift */; };
+		D208BA642A79A51700D6DE2B /* VideoPlayerCompositeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208BA632A79A51700D6DE2B /* VideoPlayerCompositeView.swift */; };
 		D208BA662A79A51800D6DE2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D208BA652A79A51800D6DE2B /* Assets.xcassets */; };
 		D208BA692A79A51800D6DE2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D208BA682A79A51800D6DE2B /* Preview Assets.xcassets */; };
 		D209D9D92A7B32D30002C4AE /* VideoPlayerConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D209D9D82A7B32D30002C4AE /* VideoPlayerConfigView.swift */; };
@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		D208BA5E2A79A51700D6DE2B /* SwiftUIVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D208BA612A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIVideoPlayerApp.swift; sourceTree = "<group>"; };
-		D208BA632A79A51700D6DE2B /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		D208BA632A79A51700D6DE2B /* VideoPlayerCompositeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCompositeView.swift; sourceTree = "<group>"; };
 		D208BA652A79A51800D6DE2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D208BA682A79A51800D6DE2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D209D9D82A7B32D30002C4AE /* VideoPlayerConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerConfigView.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 				D209D9D82A7B32D30002C4AE /* VideoPlayerConfigView.swift */,
 				D209D9DC2A8536A30002C4AE /* VideoPlayerStateObserver.swift */,
 				D209D9DE2A8537320002C4AE /* VideoPlayerStatusView.swift */,
-				D208BA632A79A51700D6DE2B /* VideoPlayerView.swift */,
+				D208BA632A79A51700D6DE2B /* VideoPlayerCompositeView.swift */,
 			);
 			path = SwiftUIVideoPlayer;
 			sourceTree = "<group>";
@@ -151,7 +151,7 @@
 			files = (
 				D209D9DB2A8425510002C4AE /* VideoPlayerConfig.swift in Sources */,
 				D209D9D92A7B32D30002C4AE /* VideoPlayerConfigView.swift in Sources */,
-				D208BA642A79A51700D6DE2B /* VideoPlayerView.swift in Sources */,
+				D208BA642A79A51700D6DE2B /* VideoPlayerCompositeView.swift in Sources */,
 				D209D9DF2A8537320002C4AE /* VideoPlayerStatusView.swift in Sources */,
 				D208BA622A79A51700D6DE2B /* SwiftUIVideoPlayerApp.swift in Sources */,
 				D209D9DD2A8536A30002C4AE /* VideoPlayerStateObserver.swift in Sources */,
