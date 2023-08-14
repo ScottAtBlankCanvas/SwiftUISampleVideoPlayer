@@ -8,14 +8,11 @@
 import Foundation
 import AVKit
 
-// TODO: tear down observers needed?
-
 class VideoPlayerStateObserver : ObservableObject {
     @Published var status: String = ""
     @Published var error: String = ""
 
     var player: AVPlayer?
-    
     private var statusObserver: Any?
     private var timeControlStatusObserver: Any?
  
@@ -33,8 +30,6 @@ class VideoPlayerStateObserver : ObservableObject {
 
     
     func connectPlayer(newPlayer: AVPlayer) {
-        teardownObservers()
-         
         player = newPlayer
         
         setupObservers()
@@ -42,27 +37,7 @@ class VideoPlayerStateObserver : ObservableObject {
     
 
     
-    private func teardownObservers() {
-//        //print("teardownObservers")
-//        if let timeObserver {
-//            print("remove timeobserver");
-//            player?.removeTimeObserver(timeObserver)
-//        }
-    }
-    
     private func setupObservers() {
- //       print("setupObservers")
-
-         
-//        // Observe the player's time periodically so we can update the seek bar's
-//        // position as we progress through playback
-//        timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 2.0, preferredTimescale: 600), queue: nil) { [/*weak*/ self] time in
-////                        guard let self = self else { return }
-//            //print("time")
-//            //print(player.currentTime().seconds)
-//         }
-//
-  
         timeControlStatusObserver = player?.observe(\.timeControlStatus, options: [.old, .new], changeHandler: {
                 [weak self] (player, change) in
 
@@ -73,7 +48,6 @@ class VideoPlayerStateObserver : ObservableObject {
             } else if (player.timeControlStatus == AVPlayer.TimeControlStatus.playing) {
                 self?.updateStatus(status: "Playing")
             }
-            //print(self?.status)
             })
  
 
@@ -85,8 +59,7 @@ class VideoPlayerStateObserver : ObservableObject {
                 if let error = playerItem.error as NSError? {
                      let errorCode = error.code
                     self?.updateError(err: "\(errorCode)")
-
-                } else {
+                } else { // TODO: handle other error types gracefully
                     self?.updateError(err: "\(playerItem.error )")
                 }
             }
