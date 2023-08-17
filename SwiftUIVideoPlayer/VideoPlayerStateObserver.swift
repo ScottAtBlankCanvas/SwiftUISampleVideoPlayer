@@ -38,7 +38,7 @@ class VideoPlayerStateObserver : ObservableObject {
 
     
     private func setupObservers() {
-        timeControlStatusObserver = player?.observe(\.timeControlStatus, options: [.old, .new], changeHandler: {
+        timeControlStatusObserver = player?.observe(\.timeControlStatus, options: [.new], changeHandler: {
                 [weak self] (player, change) in
 
             if (player.timeControlStatus  == AVPlayer.TimeControlStatus.paused) {
@@ -51,7 +51,7 @@ class VideoPlayerStateObserver : ObservableObject {
             })
  
 
-        statusObserver = player?.currentItem?.observe(\.status, options:  [.new, .old], changeHandler: {
+        statusObserver = player?.currentItem?.observe(\.status, options:  [.new], changeHandler: {
             [weak self] (playerItem, change) in
             if playerItem.status == .failed {
                 print("AvPlayerItem.Status: failed")
