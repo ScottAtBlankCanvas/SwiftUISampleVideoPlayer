@@ -13,7 +13,8 @@ class VideoPlayerStateObserver : ObservableObject {
     @Published var error: String = ""
 
     var player: AVPlayer?
-    private var statusObserver: Any?
+    private var playerObserver: Any?
+    private var playerItemObserver: Any?
     private var timeControlStatusObserver: Any?
  
     func updateStatus(status: String) {
@@ -34,7 +35,26 @@ class VideoPlayerStateObserver : ObservableObject {
         
         setupObservers()
     }
+
     
+    func handleError() {
+        // Apple docs are a bit unclear.  Errors can be one of 3 places
+        // AVPlayerItem, AVPlayer or in ErrorQueue
+        if let error = player?.currentItem?.error as NSError? {
+            updateError(err: "\(error.domain): \(error.code)")
+        } else if let error = player?.error as NSError? {
+            updateError(err: "\(error.domain): \(error.code)")
+        } else {
+            if let errorLog = player?.currentItem?.errorLog() {
+                for event:AVPlayerItemErrorLogEvent in errorLog.events {
+                    updateError(err: "\(event.errorDomain): \(event.errorStatusCode)")
+
+                    // only first one needed, so...
+                    break
+                }
+            }
+        }
+    }
 
     
     private func setupObservers() {
@@ -48,23 +68,28 @@ class VideoPlayerStateObserver : ObservableObject {
             } else if (player.timeControlStatus == AVPlayer.TimeControlStatus.playing) {
                 self?.updateStatus(status: "Playing")
             }
-            })
+        })
  
+        // Apple revommends listening to both player and playerItem to capture errors
+        
+        playerObserver = player?.observe(\AVPlayer.status, options:  [.new], changeHandler: {
+            [weak self] (player, change) in
 
-        statusObserver = player?.currentItem?.observe(\.status, options:  [.new], changeHandler: {
-            [weak self] (playerItem, change) in
-            if playerItem.status == .failed {
-                print("AvPlayerItem.Status: failed")
- 
-                if let error = playerItem.error as NSError? {
-                     let errorCode = error.code
-                    self?.updateError(err: "\(errorCode)")
-                } else { // TODO: handle other error types gracefully
-                    self?.updateError(err: "\(playerItem.error )")
-                }
+            if player.status == .failed {
+                self?.handleError()
             }
 
         })
+            
+        playerItemObserver = player?.currentItem?.observe(\.status, options:  [.new], changeHandler: {
+            [weak self] (playerItem, change) in
+
+            if playerItem.status == .failed {
+                self?.handleError()
+            }
+
+        })
+         
     
      }
     
