@@ -34,4 +34,6 @@ These were very helpful to understand the concepts:
 
 I got stuck trying to listen to AVPlayer status changes in a class and ensuring the changes gets broadcast back to my Status View.  [This article explains ObservableObject and State](https://www.hackingwithswift.com/quick-start/swiftui/whats-the-difference-between-observedobject-state-and-environmentobject) and helped me stop conflating the concepts
 
+AvPlayer error observing was also a bit confusing.  One [useful Apple resource](https://developer.apple.com/library/archive/technotes/tn2436/_index.html) helped me understand I had to listen to both AVPlayer and AVPlayerItem state
+
 
